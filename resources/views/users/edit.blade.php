@@ -23,7 +23,7 @@
   </div>
 @endif
 
-{!! Form::model($user, ['method' => 'PATCH','route' => ['users.update', $user->id]]) !!}
+{!! Form::model($user, ['method' => 'PATCH','enctype' => 'multipart/form-data','route' => ['users.update', $user->id]]) !!}
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
@@ -67,7 +67,7 @@
             {!! Form::File('image', array('placeholder' => 'Image','class' => 'form-control')) !!}
         </div>
         <div class="pt-3">
-            @if($user->image != '' && file_exists(public_path().'/uploads/user/'.$employee->image))
+            @if($user->image != '' && file_exists(public_path().'/uploads/user/'.$user->image))
                 <img src="{{ url('uploads/user/'.$user->image) }}" alt="" width="105" height="95">
             @endif
         </div>

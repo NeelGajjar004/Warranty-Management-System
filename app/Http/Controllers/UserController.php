@@ -11,6 +11,8 @@ use Hash;
 use Illuminate\Support\Arr;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
+// use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\File;
     
 class UserController extends Controller
 {
@@ -43,23 +45,23 @@ class UserController extends Controller
             'phone' => 'required|digits:10',
             'address' => 'required',
             'password' => 'required|same:confirm-password',
-            'image' => 'sometimes|image:gif,png,jpeg,jpg',
+            // 'image' => 'sometimes|image:gif,png,jpeg,jpg',
             'roles' => 'required'
         ]);
+
+        $input = $request->all();
+
+        $input['password'] = Hash::make($input['password']);
+    
+        $user = User::create($input);
 
         if($request->image) {
             $ext = $request->image->getClientOriginalExtension();
             $newFileName = time().'.'.$ext;
             $request->image->move(public_path().'/uploads/user/',$newFileName);
-
             $user->image = $newFileName;
             $user->save();
         }
-    
-        $input = $request->all();
-        $input['password'] = Hash::make($input['password']);
-    
-        $user = User::create($input);
         $user->assignRole($request->input('roles'));
     
         return redirect()->route('users.index')
@@ -89,13 +91,23 @@ class UserController extends Controller
             'phone' => 'required|digits:10',
             'address' => 'required',
             'password' => 'same:confirm-password',
-            'image' => 'sometimes|image:gif,png,jpeg,jpg',
+            // 'image' => 'sometimes|image:gif,png,jpeg,jpg',
             'roles' => 'required'
         ]);
     
         $input = $request->all();
 
-        if($input->image) {
+        
+
+        if(!empty($input['password'])){ 
+            $input['password'] = Hash::make($input['password']);
+        }else{
+            $input = Arr::except($input,array('password'));    
+        }
+        
+        $user = User::find($id);
+        $user->update($input);
+        if($request->image) {
             $oldImage = $user->image;
             $ext = $request->image->getClientOriginalExtension();
             $newFileName = time().'.'.$ext;
@@ -106,15 +118,6 @@ class UserController extends Controller
 
             File::delete(public_path().'/uploads/user/',$oldImage); 
         }
-
-        if(!empty($input['password'])){ 
-            $input['password'] = Hash::make($input['password']);
-        }else{
-            $input = Arr::except($input,array('password'));    
-        }
-    
-        $user = User::find($id);
-        $user->update($input);
         DB::table('model_has_roles')->where('model_id',$id)->delete();
     
         $user->assignRole($request->input('roles'));
