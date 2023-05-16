@@ -36,9 +36,9 @@
     <td>{{ ++$i }}</td>
     <td>
       @if($user->image != '' && file_exists(public_path().'/uploads/user/'.$user->image))
-      <img src="{{ url('image/user/'.$user->image) }}" alt="" width="50" height="40" class="rounded-square">
+      <img src="{{ url('image/user/'.$user->image) }}" alt="" width="50" height="40" class="square">
       @else
-      <img src="{{ url('assets/images/no-image.png') }}" alt="" width="50" height="40"  class="rounded-square">                        
+      <img src="{{ url('assets/images/no-image.png') }}" alt="" width="50" height="40"  class="square">                        
       @endif
     </td>
     <td>{{ $user->user_name }}</td>

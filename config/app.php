@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('Warranty Management System', 'Warranty Management System'),
 
     /*
     |--------------------------------------------------------------------------

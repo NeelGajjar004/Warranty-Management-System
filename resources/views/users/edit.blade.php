@@ -28,13 +28,25 @@
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Name:</strong>
-            {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
+            {!! Form::text('user_name',null, array('placeholder' => 'Name','class' => 'form-control')) !!}
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Email:</strong>
-            {!! Form::text('email', null, array('placeholder' => 'Email','class' => 'form-control')) !!}
+            {!! Form::text('email',null, array('placeholder' => 'Email','class' => 'form-control')) !!}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>phone:</strong>
+            {!! Form::text('phone',null, array('placeholder' => 'phone','class' => 'form-control')) !!}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>Address:</strong>
+            {!! Form::text('address',null, array('placeholder' => 'address','class' => 'form-control')) !!}
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
@@ -47,6 +59,17 @@
         <div class="form-group">
             <strong>Confirm Password:</strong>
             {!! Form::password('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control')) !!}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>Image:</strong>
+            {!! Form::File('image', array('placeholder' => 'Image','class' => 'form-control')) !!}
+        </div>
+        <div class="pt-3">
+            @if($user->image != '' && file_exists(public_path().'/uploads/user/'.$employee->image))
+                <img src="{{ url('uploads/user/'.$user->image) }}" alt="" width="105" height="95">
+            @endif
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">

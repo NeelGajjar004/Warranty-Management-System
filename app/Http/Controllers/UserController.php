@@ -38,11 +38,23 @@ class UserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $this->validate($request, [
-            'name' => 'required',
+            'user_name' => 'required',
             'email' => 'required|email|unique:users,email',
+            'phone' => 'required|digits:10',
+            'address' => 'required',
             'password' => 'required|same:confirm-password',
+            'image' => 'sometimes|image:gif,png,jpeg,jpg',
             'roles' => 'required'
         ]);
+
+        if($request->image) {
+            $ext = $request->image->getClientOriginalExtension();
+            $newFileName = time().'.'.$ext;
+            $request->image->move(public_path().'/uploads/user/',$newFileName);
+
+            $user->image = $newFileName;
+            $user->save();
+        }
     
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
@@ -72,13 +84,29 @@ class UserController extends Controller
     public function update(Request $request, $id): RedirectResponse
     {
         $this->validate($request, [
-            'name' => 'required',
+            'user_name' => 'required',
             'email' => 'required|email|unique:users,email,'.$id,
+            'phone' => 'required|digits:10',
+            'address' => 'required',
             'password' => 'same:confirm-password',
+            'image' => 'sometimes|image:gif,png,jpeg,jpg',
             'roles' => 'required'
         ]);
     
         $input = $request->all();
+
+        if($input->image) {
+            $oldImage = $user->image;
+            $ext = $request->image->getClientOriginalExtension();
+            $newFileName = time().'.'.$ext;
+            $request->image->move(public_path().'/uploads/user/',$newFileName);
+
+            $user->image = $newFileName;
+            $user->save();
+
+            File::delete(public_path().'/uploads/user/',$oldImage); 
+        }
+
         if(!empty($input['password'])){ 
             $input['password'] = Hash::make($input['password']);
         }else{
