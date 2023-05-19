@@ -49,15 +49,22 @@
                                 </li>
                             @endif
                         @else
-                            @can('user-list')
-                            <li><a class="nav-link" href="{{ route('users.index') }}">Manage Users</a></li>
-                            @endcan
-                            @can('role-list')
-                            <li><a class="nav-link" href="{{ route('roles.index') }}">Manage Role</a></li>
-                            @endcan
-                            @can('product-list')
-                            <li><a class="nav-link" href="{{ route('products.index') }}">Manage Product</a></li>
-                            @endcan
+                        @can('category-list')
+                        <li><a class="nav-link" href="{{ route('categorys.index') }}">Manage Category</a></li>
+                        @endcan
+                        @can('company-list')
+                        <li><a class="nav-link" href="{{ route('companys.index') }}">Manage Company</a></li>
+                        @endcan
+                        @can('product-list')
+                        <li><a class="nav-link" href="{{ route('products.index') }}">Manage Product</a></li>
+                        @endcan
+                        @can('role-list')
+                        <li><a class="nav-link" href="{{ route('roles.index') }}">Manage Role</a></li>
+                        @endcan
+                        @can('user-list')
+                        <li><a class="nav-link" href="{{ route('users.index') }}">Manage Users</a></li>
+                        @endcan
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->user_name }}

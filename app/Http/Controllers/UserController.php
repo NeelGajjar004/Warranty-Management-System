@@ -85,6 +85,17 @@ class UserController extends Controller
 
     public function update(Request $request, $id): RedirectResponse
     {
+        $user = User::find($id);
+
+        if(!empty($request->Active)){
+            $user->update(['IsActive' => !$request->IsActive]);
+            $user->save();
+
+            return redirect()->route('users.index')
+                        ->with('success');
+        }
+
+
         $this->validate($request, [
             'user_name' => 'required',
             'email' => 'required|email|unique:users,email,'.$id,
@@ -105,7 +116,6 @@ class UserController extends Controller
             $input = Arr::except($input,array('password'));    
         }
         
-        $user = User::find($id);
         $user->update($input);
         if($request->image) {
             $oldImage = $user->image;

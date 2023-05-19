@@ -29,6 +29,7 @@
    <th>phone</th>
    <th>Address</th>
    <th>Roles</th>
+   <th>Status</th>
    <th width="280px">Action</th>
  </tr>
  @foreach ($data as $key => $user)
@@ -51,6 +52,23 @@
            <label class="">{{ $v }}</label>
         @endforeach
       @endif
+    </td>
+    <td>
+      <form action="{{ route('users.update',$user->id) }}" method="POST">
+        @csrf
+        @method('PATCH')
+        <input type="hidden" name="Active" Value="1">
+        <input type="hidden" name="IsActive" Value="{{ $user->IsActive }}">
+        @if($user->IsActive)
+        <button type="submit" class="btn btn-small btn-outline-success">
+          <i class="fa fa-toggle-on fa-sm text-success"></i>&nbsp;Active
+        </button>
+        @else
+        <button type="submit" class="btn btn-small btn-outline-danger" title="Make Active">
+          <i class="fa fa-toggle-on fa-sm text-danger"></i>&nbsp;InActive
+        </button>
+        @endif
+      </form>
     </td>
     <td>
        <a class="btn btn-info" href="{{ route('users.show',$user->id) }}">Show</a>
