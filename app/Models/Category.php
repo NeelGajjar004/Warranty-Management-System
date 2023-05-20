@@ -13,8 +13,8 @@ class Category extends Model
 
     protected $fillable = [
         'category_name',
-        'sub_category',
-        'short_category',
+        'parent_category_id',
+        'sort_category',
         'category_image',
         'IsActive',
     ];

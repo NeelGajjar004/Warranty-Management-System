@@ -24,22 +24,7 @@ class CompanyController extends Controller
 
         return view('companys.index',compact('data'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
-    }
-    
-    // public function index(Request $request,$id):RedirectResponse 
-    // {
-    //     $company = Company::find($id);
-    //     if(!empty($request->Active)){
-    //         $company->update(['IsActive' => !$request->IsActive]);
-    //         $company->save();
-    //     }
-    //     $data = Company::latest()->paginate(5);
-
-    //     return view('companys.index',compact('data'))
-    //         ->with('i', ($request->input('page', 1) - 1) * 5);
-    // }
-
-    
+    }    
     
     public function create(): View
     {
@@ -121,7 +106,6 @@ class CompanyController extends Controller
                 //     $input = Arr::except($input,array('password'));    
                 // }
                 
-        // $company = Company::find($id);
         $company->update($input);
         if($request->company_logo) {
             $oldImage = $company->company_logo;
