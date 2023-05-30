@@ -24,4 +24,9 @@ class Company extends Model
     protected $hidden = [
         'IsActive',
     ];
+
+    public function product(){
+
+        return $this->hasMany(Product::class);
+    }
 }
