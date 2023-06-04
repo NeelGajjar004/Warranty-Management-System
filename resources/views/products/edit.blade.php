@@ -39,14 +39,50 @@
 	    </div>
         <div class="col-xs-12 col-sm-12 col-md-12 mb-2">
             <div class="form-group">
+                <strong>Product Model : </strong>
+                {!! Form::text('product_model',null, array('placeholder' => 'Product Model','class' => 'form-control')) !!}
+	        </div>
+	    </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 mb-2">
+            <div class="form-group">
+                <strong>Product Model Year : </strong>
+                {!! Form::text('product_model_year',null, array('placeholder' => 'Product Model year','class' => 'form-control')) !!}
+	        </div>
+	    </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 mb-2">
+            <div class="form-group">
                 <strong>Product Price : </strong>
                 {!! Form::text('product_price',null, array('placeholder' => 'Product Price','class' => 'form-control')) !!}
 	        </div>
 	    </div>
         <div class="col-xs-12 col-sm-12 col-md-12 mb-2">
             <div class="form-group">
-                <strong>Warranty Period : </strong>
-                {!! Form::text('warranty_period',null, array('placeholder' => 'Warranty Period','class' => 'form-control')) !!}
+                <strong>Warranty Days : </strong>
+                {!! Form::text('warranty_days',null, array('placeholder' => 'Warranty Days','class' => 'form-control')) !!}
+	        </div>
+	    </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 mb-2">
+            <div class="form-group">
+                <strong>Warranty Extendable Days : </strong>
+                {!! Form::text('warranty_extendable_days',null, array('placeholder' => 'Warranty Extendable Days','class' => 'form-control')) !!}
+	        </div>
+	    </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 mb-2">
+            <div class="form-group">
+                <strong>Age of Product : </strong>
+                {!! Form::text('age_of_product',null, array('placeholder' => 'Age of Product','class' => 'form-control')) !!}
+	        </div>
+	    </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 mb-2">
+            <div class="form-group">
+                <strong>Return Days : </strong>
+                {!! Form::text('return_days',null, array('placeholder' => 'Return Days','class' => 'form-control')) !!}
+	        </div>
+	    </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 mb-2">
+            <div class="form-group">
+                <strong>Product Policy : </strong>
+                {!! Form::textarea('product_policy',null, array('placeholder' => 'Product Policy','class' => 'form-control' , 'rows'=> 3)) !!}
 	        </div>
 	    </div>
         <div class="col-xs-6 col-sm-6 col-md-6 mb-2">
@@ -88,7 +124,7 @@
             @if($product->product_image != '' && file_exists(public_path().'/uploads/product/'.$product->product_image))
                 <img src="{{ url('uploads/product/'.$product->product_image) }}" alt="" width="105" height="95">
             @endif
-        </div>
+            </div>
         </div>
 		<div class="col-xs-12 col-sm-12 col-md-12 text-center">
 		    <button type="submit" class="btn btn-primary">Submit</button>

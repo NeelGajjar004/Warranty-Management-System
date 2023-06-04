@@ -52,6 +52,9 @@
                         @can('category-list')
                         <li><a class="nav-link" href="{{ route('categorys.index') }}">Manage Category</a></li>
                         @endcan
+                        @can('vendor-list')
+                        <li><a class="nav-link" href="{{ route('vendors.index') }}">Manage Vendor</a></li>
+                        @endcan
                         @can('company-list')
                         <li><a class="nav-link" href="{{ route('companys.index') }}">Manage Company</a></li>
                         @endcan

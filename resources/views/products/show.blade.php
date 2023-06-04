@@ -43,6 +43,27 @@
                 <strong>{{ $product->product_description }}</strong>
             </div>
         </div>
+
+        <div class="col-xs-6 col-sm-6 col-md-6 mb-2">
+            <div class="form-group">
+                <strong>Product Model : </strong>
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6">
+            <div class="form-group">
+                <strong>{{ $product->product_model }}</strong>
+            </div>
+        </div>
+	  <div class="col-xs-6 col-sm-6 col-md-6 mb-2">
+            <div class="form-group">
+                <strong>Product Model Year : </strong>
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6">
+            <div class="form-group">
+                <strong>{{ $product->product_model_year }}</strong>
+            </div>
+        </div>     
         <div class="col-xs-6 col-sm-6 col-md-6 mb-2">
             <div class="form-group">
                 <strong>Product Price : </strong>
@@ -55,14 +76,54 @@
         </div>
         <div class="col-xs-6 col-sm-6 col-md-6 mb-2">
             <div class="form-group">
-                <strong>Warranty Period : </strong>
+                <strong>Warranty Days : </strong>
             </div>
         </div>
         <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group">
-                <strong>{{ $product->warranty_period }}</strong>
+                <strong>{{ $product->warranty_days }}</strong>
             </div>
         </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 mb-2">
+              <div class="form-group">
+                  <strong>Warranty Extendable Days : </strong>
+              </div>
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-6">
+              <div class="form-group">
+                  <strong>{{ $product->warranty_extendable_days }}</strong>
+              </div>
+          </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 mb-2">
+              <div class="form-group">
+                  <strong>Age Of Product[In Year] : </strong>
+              </div>
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-6">
+              <div class="form-group">
+                  <strong>{{ $product->age_of_product }}</strong>
+              </div>
+          </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 mb-2">
+              <div class="form-group">
+                  <strong>Return Days : </strong>
+              </div>
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-6">
+              <div class="form-group">
+                  <strong>{{ $product->return_days }}</strong>
+              </div>
+          </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 mb-2">
+              <div class="form-group">
+                  <strong>Product Policy : </strong>
+              </div>
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-6">
+              <div class="form-group">
+                  <strong>{{ $product->product_policy }}</strong>
+              </div>
+          </div>
         <div class="col-xs-6 col-sm-6 col-md-6 mb-2">
             <div class="form-group">
                 <strong>Category : </strong>

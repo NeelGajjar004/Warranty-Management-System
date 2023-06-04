@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\VendorController;
 
 
 /*
@@ -35,4 +36,5 @@ Route::group(['middleware' => ['auth']],function(){
     Route::resource('products', ProductController::class);
     Route::resource('companys', CompanyController::class);
     Route::resource('categorys', CategoryController::class);
+    Route::resource('vendors', VendorController::class);
 });

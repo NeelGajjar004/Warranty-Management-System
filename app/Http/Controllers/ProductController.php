@@ -54,9 +54,15 @@ class ProductController extends Controller
         $this->validate($request, [
             'product_name' => 'required',
             'product_description' => 'required',
+            'product_model' => 'required',
+            'product_model_year'=> 'required',
             'product_price' => 'required',
-            'warranty_period' => 'required',
+            'warranty_days' => 'required',
+            'warranty_extendable_days' => 'required',
+            'age_of_product' => 'required',
+            'return_days' => 'required',
             'product_image' => 'required',
+            'product_policy' => 'required',
             'category_id' => 'required',
             'company_id' => 'required',
         ]);
@@ -97,23 +103,45 @@ class ProductController extends Controller
     public function update(Request $request, Product $product): RedirectResponse
     {
         if(!empty($request->Active)){
-            $product->update(['IsActive' => !$request->IsActive]);
+            $product->update(['IsActive' => !$request->InActive]);
             $product->save();
 
             return redirect()->route('products.index')
                         ->with('success');
         }
 
-         request()->validate([
+        if(!empty($request->Delete)){
+            $product->update(['IsDelete' => !$request->Restore]);
+            $product->save();
+
+            return redirect()->route('products.index')
+                        ->with('success');
+        }
+
+        if(!empty($request->Sold)){
+            $product->update(['IsSold' => !$request->UnSold]);
+            $product->save();
+
+            return redirect()->route('products.index')
+                        ->with('success');
+        }
+
+        request()->validate([
             'product_name' => 'required',
             'product_description' => 'required',
+            'product_model' => 'required',
+            'product_model_year'=> 'required',
             'product_price' => 'required',
-            'warranty_period' => 'required',
+            'warranty_days' => 'required',
+            'warranty_extendable_days' => 'required',
+            'age_of_product' => 'required',
+            'return_days' => 'required',
             'product_image' => 'required',
+            'product_policy' => 'required',
             'category_id' => 'required',
             'company_id' => 'required',
         ]);
-    
+        
         $product->update($request->all());
         if($request->product_image) {
             $oldImage = $product->product_image;
@@ -123,7 +151,7 @@ class ProductController extends Controller
 
             $product->product_image = $newFileName;
             $product->save();
-
+            
             File::delete(public_path().'/uploads/product/',$oldImage); 
         }
     
