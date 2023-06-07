@@ -15,4 +15,8 @@ class City extends Model
         return $this->hasMany(Vendor::class,'city_id','id');
     }
     
+    public function customers()
+    {
+        return $this->hasMany(Customer::class,'city_id','id');
+    }
 }

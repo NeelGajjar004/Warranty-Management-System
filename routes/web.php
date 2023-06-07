@@ -9,6 +9,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\VendorController;
+use App\Http\Controllers\CustomerController;
 
 
 /*
@@ -37,4 +38,8 @@ Route::group(['middleware' => ['auth']],function(){
     Route::resource('companys', CompanyController::class);
     Route::resource('categorys', CategoryController::class);
     Route::resource('vendors', VendorController::class);
+    Route::resource('customers', CustomerController::class);
 });
+
+Route::post('/fetchstates/{id}',[CustomerController::class,'fetchstates']);
+Route::post('/fetchcities/{id}',[CustomerController::class,'fetchcities']);

@@ -49,6 +49,9 @@
                                 </li>
                             @endif
                         @else
+                        @can('customer-list')
+                        <li><a class="nav-link" href="{{ route('customers.index') }}">Manage Customer</a></li>
+                        @endcan
                         @can('category-list')
                         <li><a class="nav-link" href="{{ route('categorys.index') }}">Manage Category</a></li>
                         @endcan
