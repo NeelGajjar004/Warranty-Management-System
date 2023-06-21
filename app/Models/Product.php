@@ -39,7 +39,7 @@ class Product extends Model
 
         return $this->belongsTo(Category::class);
     }
-    public function company(){
+    public function companys(){
 
         return $this->belongsTo(Company::class);
     }

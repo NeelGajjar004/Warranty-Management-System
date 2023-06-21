@@ -40,7 +40,7 @@
                 <th>Return Days</th>
                 <th>Product Policy</th>
                 <th>Category</th>
-                <th>Company</th>
+                <!-- <th>Company</th> -->
                 <th>Status</th>
                 <th width="280px">Action</th>
             </tr>
@@ -68,7 +68,6 @@
                 <td>{{ $product->return_days }}</td>
                 <td>{{ $product->product_policy }}</td>
                 <td>{{ $product['category']['category_name'] }}</td>
-                <td>{{ $product['company']['company_name'] }}</td>
                 <td>
                     <form action="{{ route('products.update',$product->id) }}" method="POST">
                         @csrf
@@ -140,11 +139,11 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
 
-<script>
+<!-- <script>
     $(document).ready( function () {
     $('#tbl').DataTable();
 });
-</script>
+</script> -->
 
     {!! $products->links() !!}
 

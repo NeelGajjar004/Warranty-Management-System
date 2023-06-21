@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-lg-12 margin-tb">
+        <div class="col-lg-12 margin-tb mb-3">
             <div class="pull-left">
                 <h2>Edit Product</h2>
             </div>
@@ -121,9 +121,9 @@
                 {!! Form::File('product_image', array('placeholder' => 'Product Image','class' => 'form-control')) !!}
             </div>
             <div class="pt-3">
-            @if($product->product_image != '' && file_exists(public_path().'/uploads/product/'.$product->product_image))
-                <img src="{{ url('uploads/product/'.$product->product_image) }}" alt="" width="105" height="95">
-            @endif
+                @if($product->product_image != '' && file_exists(public_path().'/uploads/product/'.$product->product_image))
+                    <img src="{{ url('uploads/product/'.$product->product_image) }}" alt="" width="105" height="95">
+                @endif
             </div>
         </div>
 		<div class="col-xs-12 col-sm-12 col-md-12 text-center">

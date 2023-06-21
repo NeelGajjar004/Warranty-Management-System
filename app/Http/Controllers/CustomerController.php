@@ -140,7 +140,7 @@ class CustomerController extends Controller
 
         request()->validate([
             'customer_name' => 'required',
-            'customer_email' => 'required|email|unique:customer,customer_email',
+            // 'customer_email' => 'required|email|unique:customer,customer_email',
             'customer_phone' => 'required|digits:10',
             'customer_password' => 'required',
             'date_of_birth' => 'required',

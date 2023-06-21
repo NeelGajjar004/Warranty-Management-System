@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="row">
-    <div class="col-lg-12 margin-tb">
+    <div class="col-lg-12 margin-tb mb-3">
         <div class="pull-left">
             <h2>Category Details</h2>
         </div>
@@ -23,27 +23,43 @@
             @endif
         </div>
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-12">
+    <div class="col-xs-6 col-sm-6 col-md-6">
         <div class="form-group">
             <strong>Category ID : </strong>
+        </div>
+    </div>
+    <div class="col-xs-6 col-sm-6 col-md-6">
+        <div class="form-group">
             {{ $category->id }}
         </div>
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-12">
+    <div class="col-xs-6 col-sm-6 col-md-6">
         <div class="form-group">
             <strong>Category Name : </strong>
+        </div>
+    </div>
+    <div class="col-xs-6 col-sm-6 col-md-6">
+        <div class="form-group">
             {{ $category->category_name }}
         </div>
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-12">
+    <div class="col-xs-6 col-sm-6 col-md-6">
         <div class="form-group">
             <strong>Parent Category Id : </strong>
+        </div>
+    </div>
+    <div class="col-xs-6 col-sm-6 col-md-6">
+        <div class="form-group">
             {{ $category->parent_category_id }}
         </div>
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-12">
+    <div class="col-xs-6 col-sm-6 col-md-6">
         <div class="form-group">
             <strong>Sort Category : </strong>
+        </div>
+    </div>
+    <div class="col-xs-6 col-sm-6 col-md-6">
+        <div class="form-group">
             {{ $category->sort_category }}
         </div>
     </div>

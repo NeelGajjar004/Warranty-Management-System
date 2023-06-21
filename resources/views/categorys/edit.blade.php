@@ -2,9 +2,9 @@
 
 @section('content')
 <div class="row">
-    <div class="col-lg-12 margin-tb">
+    <div class="col-lg-12 margin-tb mb-3">
         <div class="pull-left">
-            <h2>Edit Comapny Details</h2>
+            <h2>Edit Category Details</h2>
         </div>
         <div class="pull-right">
             <a class="btn btn-primary" href="{{ route('categorys.index') }}"> Back</a>

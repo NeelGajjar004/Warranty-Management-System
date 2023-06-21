@@ -24,16 +24,12 @@ class ProductController extends Controller
 
     public function index(): View
     {
-        $categorys = Category::all();
+        $category = Category::all();
         $companys = Company::all();
-        $products = Product::with('category')->get();
-        $products = Product::with('company')->get();
-        
-        
-        // return view('products.index',['products'=> $products,'categorys' => $categorys]);
+        $products = Product::with('category','companys')->get();
         
         $products = Product::latest()->paginate(5);
-        return view('products.index',['products'=> $products ,'category' => $categorys , 'company' => $companys])
+        return view('products.index',['products'=> $products ,'category' => $category , 'companys' => $companys])
         ->with('i', (request()->input('page', 1) - 1) * 5);
     }
     
@@ -136,7 +132,6 @@ class ProductController extends Controller
             'warranty_extendable_days' => 'required',
             'age_of_product' => 'required',
             'return_days' => 'required',
-            'product_image' => 'required',
             'product_policy' => 'required',
             'category_id' => 'required',
             'company_id' => 'required',

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="row mb-3">
-        <div class="col-lg-6 margin-tb">
+        <div class="col-lg-6 margin-tb mb-3">
             <div class="pull-left">
                     <a class="btn btn-primary" href="{{ route('customers.index') }}"> 
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left" viewBox="0 0 16 16">

@@ -30,13 +30,9 @@ class VendorController extends Controller
         $vendors = Vendor::latest()->paginate(5);
         return view('vendors.index',['vendors'=> $vendors ,'cities' => $cities])
         ->with('i', (request()->input('page', 1) - 1) * 5);
-
+        
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create(): View
     {
         $cities = City::all();
@@ -123,10 +119,11 @@ class VendorController extends Controller
                         ->with('success');
         }
 
+
         request()->validate([
             'vendor_name' => 'required',
             'store_name' => 'required',
-            'vendor_email' => 'required|email|unique:vendor,vendor_email',
+            // 'vendor_email' => 'required|email|unique:vendor,email',
             'vendor_phone' => 'required|digits:10',
             'vendor_password' => 'required',
             'vendor_address' => 'required',

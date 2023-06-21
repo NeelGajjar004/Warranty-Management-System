@@ -134,15 +134,5 @@
                 <strong>{{ $product['category']['category_name'] }}</strong>
             </div>
         </div>
-        <div class="col-xs-6 col-sm-6 col-md-6 mb-2">
-            <div class="form-group">
-                <strong>Company : </strong>
-            </div>
-        </div>
-        <div class="col-xs-6 col-sm-6 col-md-6">
-            <div class="form-group">
-                <strong>{{ $product['company']['company_name'] }}</strong>
-            </div>
-        </div>
     </div>
 @endsection
