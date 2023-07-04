@@ -39,5 +39,12 @@ class Vendor extends Model
         return $this->belongsTo(City::class,'city_id','id');
     }
 
-    
+    public function vencom(){
+
+        return $this->hasMany(Vendors_Has_Companies::class,'vendor_id','id');
+    }
+
+    public function company(){
+        return $this->hasMany(Company::class);
+    }
 }

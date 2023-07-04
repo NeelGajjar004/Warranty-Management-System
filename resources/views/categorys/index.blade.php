@@ -4,11 +4,11 @@
 <div class="row">
     <div class="col-lg-12 margin-tb mb-3">
         <div class="pull-left">
-            <h2>Categorys List</h2>
+            <h2>Category</h2>
         </div>
         @can('category-create')
         <div class="pull-right mb-3">
-            <a class="btn btn-success" href="{{ route('categorys.create') }}"> Create New category</a>
+            <a class="btn btn-success" href="{{ route('categorys.create') }}"> Create New Category</a>
         </div>
         @endcan
     </div>
@@ -23,18 +23,16 @@
 <table class="table table-bordered">
  <tr>
    <th>No</th>
-   <th>Category ID</th>
-   <th>Category Image</th>
-   <th>Category Name</th>
+   <th>Image</th>
+   <th>Name</th>
    <th>Parent Category id</th>
-   <th>Sort Category</th>
+   <th>Sort Order</th>
    <th>Status</th>
    <th width="280px">Action</th>
  </tr>
  @foreach ($data as $key => $category)
   <tr>
     <td>{{ ++$i }}</td>
-    <td>{{ $category->id }}</td>
     <td>
       @if($category->category_image != '' && file_exists(public_path().'/uploads/category/'.$category->category_image))
             <img src="{{ url('uploads/category/'.$category->category_image) }}" alt="" width="105" height="65" class="rounded-sqaur">

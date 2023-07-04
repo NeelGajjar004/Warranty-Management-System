@@ -8,6 +8,7 @@ use DB;
 use Validator;
 use App\Models\City;
 use App\Models\Vendor;
+use App\Models\Company;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\File;
@@ -30,6 +31,10 @@ class VendorController extends Controller
         $vendors = Vendor::latest()->paginate(5);
         return view('vendors.index',['vendors'=> $vendors ,'cities' => $cities])
         ->with('i', (request()->input('page', 1) - 1) * 5);
+
+        return response()->json([
+            'vendors'=>Vendor::get()
+        ]);
         
     }
 
@@ -77,6 +82,13 @@ class VendorController extends Controller
         $cities = City::all();
         return view('vendors.show',compact('vendor','cities'));
     }
+
+    public function vencom(vendor $vendors): View
+    {
+        // $vendors = Vendor::get();
+        $companies = Company::get();
+        return view('vendors.vencom',compact('vendors','companies'));
+    }
     
     public function edit(vendor $vendor): View
     {
@@ -84,6 +96,30 @@ class VendorController extends Controller
         
         return view('vendors.edit',compact('vendor','cities'));
     }
+    
+    public function vencomstore(Request $request, vendor $vendor): RedirectResponse
+    {
+        // $vendors = Vendor::find($id);
+        // dd($vendor);
+
+        $this->validate($request, [
+            'vendor_id' => 'required',
+            'companies' => 'required',
+        ]);
+    
+        $company = $request->companies;
+        
+        
+        foreach($company as $com){
+
+            $vencom = Vendors_Has_Companies::create(['vendor_id' => $vendor,'company_id'=> $com]);
+        }
+        
+        
+        return redirect()->route('vencoms.index')
+        ->with('success','company assigned successfully');
+    }
+    
 
     public function update(Request $request, vendor $vendor): RedirectResponse
     {

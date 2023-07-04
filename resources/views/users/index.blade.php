@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-lg-12 margin-tb mb-3">
         <div class="pull-left">
-            <h2>Users Management</h2>
+            <h2>User Management</h2>
         </div>
         @can('user-create')
         <div class="pull-right">
@@ -26,7 +26,7 @@
    <th>Image</th>
    <th>Name</th>
    <th>Email</th>
-   <th>phone</th>
+   <th>Phone</th>
    <th>Address</th>
    <th>Roles</th>
    <th>Status</th>

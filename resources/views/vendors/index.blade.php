@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Vendors</h2>
+                <h2>Vendor</h2>
             </div>
             <div class="pull-right mb-3">
                 @can('vendor-create')
@@ -27,17 +27,14 @@
         <thead>
             <tr>
                 <th>No</th>
-                <th>ID</th>
-                <th>Vendor Image</th>
-                <th>Vendor Name</th>
+                <th>Image</th>
+                <th>Name</th>
                 <th>Store Name</th>
-                <th>Vendor Email</th>
-                <th>Vendor Phone</th>
-                <th>Vendor Password</th>
-                <th>Vendor Address</th>
+                <th>Email</th>
+                <th>Phone</th>
                 <th>City</th>
-                <th>Vendor Pincode</th>
                 <th>GST Number</th>
+                <th>Company</th>
                 <th>Status</th>
                 <th width="280px">Action</th>
             </tr>
@@ -46,23 +43,20 @@
             @foreach ($vendors as $vendor)
             <tr>
                 <td>{{ ++$i }}</td>
-                <td>{{ $vendor->id }}</td>
                 <td>
                     @if($vendor->vendor_image != '' && file_exists(public_path().'/uploads/vendor/'.$vendor->vendor_image))
-                    <img src="{{ url('uploads/vendor/'.$vendor->vendor_image) }}" alt="" width="55" height="45">
+                    <img src="{{ url('uploads/vendor/'.$vendor->vendor_image) }}" alt="" width="75" height="60">
                     @else
-                    <img src="{{ url('assets/images/no-image.png') }}" alt="" width="55" height="45" >                        
+                    <img src="{{ url('assets/images/no-image.png') }}" alt="" width="75" height="60" >                        
                     @endif
                 </td>
                 <td>{{ $vendor->vendor_name }}</td>
                 <td>{{ $vendor->store_name }}</td>
                 <td>{{ $vendor->vendor_email }}</td>
                 <td>{{ $vendor->vendor_phone }}</td>
-                <td>{{ $vendor->vendor_password }}</td>
-                <td>{{ $vendor->vendor_address }}</td>
                 <td>{{ $vendor['cities']['city_name'] }}</td>
-                <td>{{ $vendor->vendor_pincode }}</td>
                 <td>{{ $vendor->gst_number }}</td>
+                <td><a class="btn btn-info" href="{{ route('vencom',$vendor->id) }}">Company</a></td>
                 <td>
                     <form action="{{ route('vendors.update',$vendor->id) }}" method="POST">
                         @csrf

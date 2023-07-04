@@ -29,4 +29,14 @@ class Company extends Model
 
         return $this->hasMany(Product::class);
     }
+
+    public function vencom(){
+
+        return $this->hasMany(Vendors_Has_Companies::class,'company_id','id');
+    }
+
+    public function vendor(){
+        return $this->hasMany(Vendor::class);
+    }
+    
 }

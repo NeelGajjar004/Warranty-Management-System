@@ -10,6 +10,7 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\VendorCompanyController;
 
 
 /*
@@ -39,6 +40,10 @@ Route::group(['middleware' => ['auth']],function(){
     Route::resource('categorys', CategoryController::class);
     Route::resource('vendors', VendorController::class);
     Route::resource('customers', CustomerController::class);
+    Route::resource('vencoms', VendorCompanyController::class);
+    Route::get('/vencom/{vendor}','App\Http\Controllers\VendorController@vencom')->name('vencom');
+    Route::put('/vencomstore/{vendor}','App\Http\Controllers\VendorController@vencomstore')->name('vendors.vencomstore');
+    
 });
 
 Route::post('/fetchstates/{id}',[CustomerController::class,'fetchstates']);

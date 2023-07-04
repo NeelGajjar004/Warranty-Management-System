@@ -4,11 +4,11 @@
 <div class="row">
     <div class="col-lg-12 margin-tb mb-3">
         <div class="pull-left">
-            <h2>Companies Management</h2>
+            <h2>Company</h2>
         </div>
         @can('company-create')
         <div class="pull-right mb-3">
-            <a class="btn btn-success" href="{{ route('companys.create') }}"> Add New company</a>
+            <a class="btn btn-success" href="{{ route('companys.create') }}">Add New Company</a>
         </div>
         @endcan
     </div>
@@ -23,12 +23,12 @@
 <table class="table table-bordered">
  <tr>
    <th>No</th>
-   <th>Company_logo</th>
-   <th>Company_Name</th>
-   <th>Company_Email</th>
-   <th>Company_phone</th>
-   <th>Company_Address</th>
-   <th>Company_Description</th>
+   <th>logo</th>
+   <th>Name</th>
+   <th>Email</th>
+   <th>Phone</th>
+   <th>Address</th>
+   <!-- <th>Description</th> -->
    <th>Status</th>
    <th width="280px">Action</th>
  </tr>
@@ -37,16 +37,16 @@
     <td>{{ ++$i }}</td>
     <td>
       @if($company->company_logo != '' && file_exists(public_path().'/uploads/company/'.$company->company_logo))
-            <img src="{{ url('uploads/company/'.$company->company_logo) }}" alt="" width="55" height="45" class="rounded-circle">
+            <img src="{{ url('uploads/company/'.$company->company_logo) }}" alt="" width="70" height="60" class="square">
       @else
-            <img src="{{ url('assets/images/no-image.png') }}" alt="" width="55" height="45"  class="rounded-circle">                        
+            <img src="{{ url('assets/images/no-image.png') }}" alt="" width="70" height="60"  class="rounded-circle">                        
       @endif
     </td>
     <td>{{ $company->company_name }}</td>
     <td>{{ $company->company_email }}</td>
     <td>{{ $company->company_phone }}</td>
     <td>{{ $company->company_address }}</td>
-    <td>{{$company->company_description}}</td>
+    <!-- <td>{{$company->company_description}}</td> -->
     <td>
       <form action="{{ route('companys.update',$company->id) }}" method="POST">
         @csrf

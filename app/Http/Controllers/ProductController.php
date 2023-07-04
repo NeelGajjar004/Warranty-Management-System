@@ -25,19 +25,14 @@ class ProductController extends Controller
     public function index(): View
     {
         $category = Category::all();
-        $companys = Company::all();
-        $products = Product::with('category','companys')->get();
+        $company = Company::all();
+        $products = Product::with('category','company')->get();
         
         $products = Product::latest()->paginate(5);
-        return view('products.index',['products'=> $products ,'category' => $category , 'companys' => $companys])
+        return view('products.index',['products'=> $products ,'category' => $category , 'company' => $company])
         ->with('i', (request()->input('page', 1) - 1) * 5);
     }
     
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create(): View
     {
         $categorys = Category::all();

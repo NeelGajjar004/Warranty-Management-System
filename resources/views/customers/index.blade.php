@@ -4,11 +4,11 @@
     <div class="row">
         <div class="col-lg-12 margin-tb mb-3">
             <div class="pull-left">
-                <h2>Customers List</h2>
+                <h2>Customer</h2>
             </div>
             <div class="pull-right mb-3">
                 @can('customer-create')
-                <a class="btn btn-success" href="{{ route('customers.create') }}"> Add New customer</a>
+                <a class="btn btn-success" href="{{ route('customers.create') }}"> Add New Customer</a>
                 @endcan
             </div>
         </div>
@@ -27,14 +27,11 @@
         <thead>
             <tr>
                 <th>No</th>
-                <th>ID</th>
-                <th>Customer Image</th>
-                <th>Customer Name</th>
-                <th>Customer Email</th>
-                <th>Customer Phone</th>
-                <th>Customer Password</th>
-                <th>DOB</th>
-                <!-- <th>Date Of Birth</th> -->
+                <th>Image</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Date Of Birth</th>
                 <th>Country</th>
                 <th>State</th>
                 <th>City</th>
@@ -46,7 +43,6 @@
             @foreach ($customers as $customer)
             <tr>
                 <td>{{ ++$i }}</td>
-                <td>{{ $customer->id }}</td>
                 <td>
                     @if($customer->customer_image != '' && file_exists(public_path().'/uploads/customer/'.$customer->customer_image))
                     <img src="{{ url('uploads/customer/'.$customer->customer_image) }}" alt="" width="55" height="45">
@@ -57,7 +53,6 @@
                 <td>{{ $customer->customer_name }}</td>
                 <td>{{ $customer->customer_email }}</td>
                 <td>{{ $customer->customer_phone }}</td>
-                <td>{{ $customer->customer_password }}</td>
                 <td>{{ $customer->date_of_birth }}</td>
                 <td>{{ $customer['countrys']['country_name'] }}</td>
                 <td>{{ $customer['states']['state_name'] }}</td>

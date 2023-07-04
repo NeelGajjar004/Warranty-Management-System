@@ -9,6 +9,15 @@ class Product extends Model
 {
     use HasFactory;
     protected $table = 'product';
+
+    public function category(){
+
+        return $this->belongsTo(Category::class);
+    }
+    public function company(){
+
+        return $this->belongsTo(Company::class);
+    }
     
     protected $fillable = [
         'product_name',
@@ -35,13 +44,6 @@ class Product extends Model
         'IsSold',
     ];
 
-    public function category(){
-
-        return $this->belongsTo(Category::class);
-    }
-    public function companys(){
-
-        return $this->belongsTo(Company::class);
-    }
+    
 
 }
