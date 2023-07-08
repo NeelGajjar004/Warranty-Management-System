@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VendorController;
+use App\Http\Controllers\ApiController;
 
 
 /*
@@ -20,4 +21,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('vendors',VendorController::class);
+// Route::get('vendorlist',[VendorController::class,'index']);
+
+Route::get('vendor-list',[ApiController::class,'vendorindex']);
+Route::get('product-list',[ApiController::class,'productindex']);
+Route::get('company-list',[ApiController::class,'companyindex']);
+Route::get('category-list',[ApiController::class,'categoryindex']);
+Route::get('customer-list',[ApiController::class,'customerindex']);
+Route::get('country-list',[ApiController::class,'countryindex']);
+Route::get('state-list',[ApiController::class,'stateindex']);
+Route::get('city-list',[ApiController::class,'cityindex']);
